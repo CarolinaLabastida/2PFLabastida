@@ -7,10 +7,9 @@ import { BehaviorSubject, Observable, take, map } from 'rxjs';
 })
 export class CourseService {
   coursesCount: number = 0;
-  courses_mocks: Course[] = courses;
 
   private courses$ = new BehaviorSubject<Course[]>(
-    []
+    courses
   );
 
   constructor(){
@@ -18,8 +17,7 @@ export class CourseService {
   }
 
   getCourses(): Observable<Course[]> {
-    this.coursesCount = this.courses_mocks.length;
-    this.courses$.next(this.courses_mocks);
+    this.coursesCount = courses.length;
     return this.courses$.asObservable();
   }
 

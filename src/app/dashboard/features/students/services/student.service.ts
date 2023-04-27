@@ -9,16 +9,14 @@ import students, { FormDataStudent, Student } from '../models/student';
 export class StudentService {
 
   studentsCount:number = 0;
-  students_mocks: Student[] = students;
   private students$ = new BehaviorSubject<Student[]>(
-    []
+    students
   );
 
   constructor() { }
 
   getStudents(): Observable<Student[]> {
-    this.studentsCount = this.students_mocks.length;
-    this.students$.next(this.students_mocks);
+    this.studentsCount = students.length;
     return this.students$.asObservable();
   }
 

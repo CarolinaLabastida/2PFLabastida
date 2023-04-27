@@ -104,5 +104,15 @@ export class EnrollmentService {
     return this.enrollments$.asObservable();
   }
 
+  
+  getEnrollmentsByCourseId(id: number): Observable<Enrollment[]> {
+    this.enrollments$.next(this.enrollments_mocks.filter(c => c.courseId == id));
+    return this.enrollments$.asObservable();
+  }
+
+  getEnrollmentsByStudentId(id: number): Observable<Enrollment[]> {
+    this.enrollments$.next(this.enrollments_mocks.filter(c => c.studentId == id));
+    return this.enrollments$.asObservable();
+  }
 
 }

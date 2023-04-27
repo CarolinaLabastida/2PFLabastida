@@ -49,8 +49,6 @@ export class CreateUpdateComponent {
     this.dateValidator(),
   ]);
 
-  courseControl = new FormControl('', [Validators.required]);
-
   genderControl = new FormControl('');
 
   studentForm = new FormGroup({
@@ -59,7 +57,6 @@ export class CreateUpdateComponent {
     email: this.emailControl,
     phone: this.phoneControl,
       birthDate: this.birthDateControl,
-      course: this.courseControl,
       gender: this.genderControl
   });
 
@@ -74,7 +71,6 @@ export class CreateUpdateComponent {
       this.emailControl.setValue(studentData.email);
       this.phoneControl.setValue(studentData.phone);
       this.birthDateControl.setValue(studentData.birthDate);
-      this.courseControl.setValue(studentData.course);
       this.genderControl.setValue(studentData.gender);
     }
   }
