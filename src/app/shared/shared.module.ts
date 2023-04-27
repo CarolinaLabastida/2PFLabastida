@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { ControlErrorMessagesPipe } from './pipes/control-error-messages.pipe';
 import { FontSizeDirective } from './directives/font-size.directive';
+import { DescriptionsPipe } from './pipes/descriptions.pipe';
 
 
 
@@ -10,7 +11,8 @@ import { FontSizeDirective } from './directives/font-size.directive';
   declarations: [
     FullNamePipe,
     ControlErrorMessagesPipe,
-    FontSizeDirective
+    FontSizeDirective,
+    DescriptionsPipe
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { FontSizeDirective } from './directives/font-size.directive';
   exports: [
     FullNamePipe,
     ControlErrorMessagesPipe,
-    FontSizeDirective
+    FontSizeDirective,
+    DescriptionsPipe
   ]
 })
 export class SharedModule { }

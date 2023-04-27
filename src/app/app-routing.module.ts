@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentsComponent } from './dashboard/features/students/students.component';
 import { CoursesComponent } from './dashboard/features/courses/courses.component';
-import { InscriptionsComponent } from './dashboard/features/inscriptions/inscriptions.component';
+import { EnrollmentsComponent } from './dashboard/features/enrollments/enrollments.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './dashboard/features/home/home.component';
+import { DetailComponent as StudentDetail} from './dashboard/features/students/pages/detail/detail.component';
+import { DetailComponent as CourseDetail} from './dashboard/features/courses/pages/detail/detail.component';
+import { DetailComponent as EnrrollmentDetail } from './dashboard/features/enrollments/pages/detail/detail.component';
 
 const routes: Routes = [
   {
@@ -11,11 +15,24 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path: 'inicio',
+        children: [
+          {
+            path: '',
+            component: HomeComponent
+          }
+        ]
+      },
+      {
         path: 'alumnos',
         children: [
           {
             path: '',
             component: StudentsComponent
+          },
+          {
+            path: ':id',
+            component: StudentDetail
           }
         ]
       },
@@ -25,6 +42,10 @@ const routes: Routes = [
           {
             path: '',
             component: CoursesComponent
+          },
+          {
+            path: ':id',
+            component: CourseDetail
           }
         ]
       },
@@ -33,7 +54,11 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: InscriptionsComponent
+            component: EnrollmentsComponent
+          },
+          {
+            path: ':id',
+            component: EnrrollmentDetail
           }
         ]
       }
@@ -41,7 +66,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'sistema'
+    redirectTo: 'sistema/inicio'
   }
 ];
 

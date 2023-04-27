@@ -3,7 +3,6 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Student } from '../../models/student';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -82,7 +81,8 @@ export class CreateUpdateComponent {
 
   save(): void{
     if (this.studentForm.valid) {
-      this.dialogRef.close(this.studentForm.value)
+      console.log(this.studentForm);
+      this.dialogRef.close(this.studentForm.value);
     } else {
       this.studentForm.markAllAsTouched();
     }

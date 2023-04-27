@@ -7,6 +7,7 @@ import { StudentService } from './services/student.service';
 import { NotificationsService } from '../../../core/services/notifications.service';
 import Swal from 'sweetalert2';
 import { CreateUpdateComponent } from './dialogs/create-update/create-update.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -15,7 +16,7 @@ import { CreateUpdateComponent } from './dialogs/create-update/create-update.com
 })
 export class StudentsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Student>();
-  suscriptionRef: Subscription | null;
+  subscriptionRef: Subscription | null;
 
   displayedColumns: string[] = [
     'actions',
@@ -25,32 +26,32 @@ export class StudentsComponent implements OnInit, OnDestroy {
     'phone',
     'birthDate',
     'gender',
-    'course',
   ];
 
   constructor(
     public dialog: MatDialog,
     private studentService: StudentService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
 
-    this.suscriptionRef = this.notificationsService.showMessage().subscribe((name) => {
-      Swal.fire( name, '', 'success');
+    this.subscriptionRef = this.notificationsService.showMessage().subscribe((text) => {
+      Swal.fire( text, '', 'success');
     })
   }
 
   ngOnInit(): void {
     this.studentService.getStudents() 
-    .subscribe((students) => {
-      this.dataSource.data = students;
-    }, (error) => {
-      alert(error);
+    .subscribe({
+      next: (students) => this.dataSource.data = students,
+      error: (e) => console.error(e),
     })
 
   }
 
   ngOnDestroy(): void {
-    this.suscriptionRef?.unsubscribe();
+    this.subscriptionRef?.unsubscribe();
   }
 
   removeData(student: Student) {
@@ -81,5 +82,11 @@ export class StudentsComponent implements OnInit, OnDestroy {
         this.notificationsService.createMessage(`${formData.name} ha sido modificado(a)`);
       }
     });
+  }
+
+  showDetails(studentId: number): void {
+    this.router.navigate([studentId], {
+      relativeTo: this.activatedRoute
+    })
   }
 }

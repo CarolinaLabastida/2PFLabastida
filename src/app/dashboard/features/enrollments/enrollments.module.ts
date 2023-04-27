@@ -1,25 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoursesComponent } from './courses.component';
+import { EnrollmentsComponent } from './enrollments.component';
+import { CreateUpdateComponent } from './dialogs/create-update/create-update.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CreateUpdateComponent } from './dialogs/create-update/create-update.component';
 import { DetailComponent } from './pages/detail/detail.component';
-
 
 @NgModule({
   declarations: [
-    CoursesComponent,
+    EnrollmentsComponent,
     CreateUpdateComponent,
     DetailComponent
   ],
@@ -30,13 +26,10 @@ import { DetailComponent } from './pages/detail/detail.component';
     MatTableModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     SharedModule,
     MatTooltipModule,
     MatSelectModule,
     ReactiveFormsModule
   ]
 })
-export class CoursesModule { }
+export class EnrollmentsModule { }

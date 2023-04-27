@@ -14,11 +14,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailComponent } from './pages/detail/detail.component';
 
 @NgModule({
   declarations: [
     StudentsComponent,
-    CreateUpdateComponent
+    CreateUpdateComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

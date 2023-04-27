@@ -5,7 +5,7 @@
     <div id="admin-sidebar">
         <mat-nav-list>
             <a
-            [routerLink]="item.path" 
+            [routerLink]="item.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"
               mat-list-item
               *ngFor="let item of items"
             >

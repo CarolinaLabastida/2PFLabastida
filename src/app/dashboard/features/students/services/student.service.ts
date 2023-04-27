@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, take } from 'rxjs';
+import { BehaviorSubject, Observable, map, take } from 'rxjs';
 import students, { FormDataStudent, Student } from '../models/student';
 
 
@@ -20,6 +20,13 @@ export class StudentService {
     this.studentsCount = this.students_mocks.length;
     this.students$.next(this.students_mocks);
     return this.students$.asObservable();
+  }
+
+  getStudentById(id: number): Observable<Student | undefined> {
+    return this.students$.asObservable()
+    .pipe(
+      map((students) => students.find((s) => s.id == id))
+    )
   }
 
   createStudent(newStudent: FormDataStudent): Observable<Student[]>{

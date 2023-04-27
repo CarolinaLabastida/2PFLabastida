@@ -6,7 +6,6 @@ export interface Student{
     phone: string,
     birthDate: Date,
     gender:string
-    course:string
   }
 
   export interface FormDataStudent{
@@ -16,7 +15,6 @@ export interface Student{
     phone: string,
     birthDate: Date,
     gender:string
-    course:string
   }
 
 const students: Student[] = [
@@ -27,8 +25,7 @@ const students: Student[] = [
       email: 'jcamacho@gmail.com',
       phone: '8338925678',
       birthDate: new Date('2000-02-15'),
-      gender: 'M',
-      course: 'Java'
+      gender: 'M'
     },
     {
       id: 2,
@@ -37,8 +34,7 @@ const students: Student[] = [
       email: 'NRuiz_dom@hotmail.com',
       phone: '2417895648',
       birthDate: new Date('2001-01-03'),
-      gender: 'F',
-      course: 'C#'
+      gender: 'F'
     },
     {
       id: 3,
@@ -47,8 +43,7 @@ const students: Student[] = [
       email: 'oscar.mendoza@gmail.com',
       phone: '8331456789',
       birthDate: new Date('1999-02-15'),
-      gender: 'M',
-      course: 'Html'
+      gender: 'M'
     },
     {
       id: 4,
@@ -57,8 +52,7 @@ const students: Student[] = [
       email: 'lalmanza23@hotmail.com',
       phone: '8336728907',
       birthDate: new Date('1977-06-02'),
-      gender: 'F',
-      course: 'Angular'
+      gender: 'F'
     },
     {
       id: 5,
@@ -67,8 +61,7 @@ const students: Student[] = [
       email: 'v.Fernanda@gmail.com',
       phone: '7246893789',
       birthDate: new Date('2000-03-03'),
-      gender: 'F',
-      course: 'Inglés'
+      gender: 'F'
     }
   ]
 

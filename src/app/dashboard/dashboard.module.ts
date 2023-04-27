@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { StudentsModule } from './features/students/students.module';
 import { CoursesModule } from './features/courses/courses.module';
-import { InscriptionsModule } from './features/inscriptions/inscriptions.module';
+import { EnrollmentsModule } from './features/enrollments/enrollments.module';
 
 
 @NgModule({
@@ -30,7 +30,7 @@ import { InscriptionsModule } from './features/inscriptions/inscriptions.module'
     RouterModule,
     StudentsModule,
     CoursesModule,
-    InscriptionsModule
+    EnrollmentsModule
   ],
   exports: [
     DashboardComponent
