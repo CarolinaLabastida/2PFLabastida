@@ -12,6 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailComponent } from './pages/detail/detail.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DetailComponent } from './pages/detail/detail.component';
     SharedModule,
     MatTooltipModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ]
 })
 export class EnrollmentsModule { }

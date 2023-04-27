@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUpdateComponent } from './dialogs/create-update/create-update.component';
 import { DetailComponent } from './pages/detail/detail.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { DetailComponent } from './pages/detail/detail.component';
     SharedModule,
     MatTooltipModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ]
 })
 export class CoursesModule { }

@@ -1,22 +1,35 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import courses from 'src/app/dashboard/features/courses/models/course';
-import students from 'src/app/dashboard/features/students/models/student';
+import { CourseService } from '../../dashboard/features/courses/services/course.service';
+import { pipe } from 'rxjs';
+import { StudentService } from '../../dashboard/features/students/services/student.service';
 
 @Pipe({
   name: 'descriptions'
 })
 export class DescriptionsPipe implements PipeTransform {
 
-  transform(value: number, args: string): unknown {
+  constructor(
+    private courseService: CourseService,
+    private studentService: StudentService
+  ){
+  }
+
+  transform(value: any, args: string): unknown {
     if(!value) return '';
 
-    let defaultText = '';
+    let defaultText: string = '';
     switch(args){
       case 'course':
-        defaultText = `${courses.find(c => c.id == value)?.name}`;
+        this.courseService.getCourseById(value)
+        .subscribe({
+          next: pipe(map => defaultText = `${map?.name}` )
+        })
         break;
       case 'student':
-        defaultText = `${students.find(s => s.id == value)?.name}  ${students.find(s => s.id == value)?.lastName}`;
+        this.studentService.getStudentById(value)
+        .subscribe({
+          next: pipe(map => defaultText =  `${map?.name} ${map?.lastName}` )
+        })
         break;
       default:
         defaultText = '';

@@ -7,10 +7,10 @@ import { BehaviorSubject, Observable, map, take } from 'rxjs';
 })
 export class EnrollmentService {
   enrollmentsCount: number = 0;
-  enrollments_mocks: Enrollment[] = enrollments;
+
 
   private enrollments$ = new BehaviorSubject<Enrollment[]>(
-    []
+    enrollments
   );
 
   constructor(){
@@ -18,8 +18,7 @@ export class EnrollmentService {
   }
 
   getEnrollments(): Observable<Enrollment[]> {
-    this.enrollmentsCount = this.enrollments_mocks.length;
-    this.enrollments$.next(this.enrollments_mocks);
+    this.enrollmentsCount = enrollments.length;
     return this.enrollments$.asObservable();
   }
 
@@ -106,13 +105,17 @@ export class EnrollmentService {
 
   
   getEnrollmentsByCourseId(id: number): Observable<Enrollment[]> {
-    this.enrollments$.next(this.enrollments_mocks.filter(c => c.courseId == id));
-    return this.enrollments$.asObservable();
+    return this.enrollments$.asObservable()
+    .pipe(
+      map((enrollments) => enrollments.filter(c => c.courseId == id))
+    )
   }
 
   getEnrollmentsByStudentId(id: number): Observable<Enrollment[]> {
-    this.enrollments$.next(this.enrollments_mocks.filter(c => c.studentId == id));
-    return this.enrollments$.asObservable();
+    return this.enrollments$.asObservable()
+    .pipe(
+      map((enrollments) => enrollments.filter(c => c.studentId == id))
+    )
   }
 
 }
